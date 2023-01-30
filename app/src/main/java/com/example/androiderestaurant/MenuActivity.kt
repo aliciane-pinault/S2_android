@@ -18,6 +18,8 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
             val category = intent.getSerializableExtra(extraKey) as? Category
+
+            supportActionBar?.title = categoryName(category ?:Category.STARTER)
     }
 
     override fun onStart() {
