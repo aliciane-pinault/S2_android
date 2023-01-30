@@ -16,7 +16,22 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
             binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-            Log.d("LifeCycle", "MenuActivity on Create")
+
+            val category = intent.getSerializableExtra(extraKey) as? Category
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("LifeCycle", "MenuActivity on Create")
+    }
+
+    private fun categoryName(category: Category): String{
+        return when (category){
+            Category.STARTER -> getString(R.string.starter)
+            Category.MAIN -> getString(R.string.center)
+            Category.DESSERT -> getString(R.string.finish)
+        }
+
     }
 
     override fun onDestroy() {
