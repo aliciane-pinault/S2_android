@@ -16,7 +16,7 @@
         android:backgroundTintMode="screen"
         android:src="@drawable/voilact_"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="-1dp" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -51,8 +51,9 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Welcom "
-        android:textColor="#673AB7"
+        android:textColor="#977DC5"
         android:textColorHint="#009688"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,5 +131,16 @@
         app:layout_constraintStart_toStartOf="@+id/fin"
         app:layout_constraintTop_toBottomOf="@+id/fin"
         app:layout_constraintVertical_bias="0.281" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="133dp"
+        android:layout_height="110dp"
+        android:src="@drawable/cosmo_fond1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
