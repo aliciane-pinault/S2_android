@@ -6,7 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request.Method
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
+import com.example.androiderestaurant.network.NetworkConstants
+import org.json.JSONObject
 
 enum class Category {STARTER, MAIN, DESSERT}
 class MenuActivity : AppCompatActivity() {
@@ -23,7 +28,28 @@ class MenuActivity : AppCompatActivity() {
             val category = intent.getSerializableExtra(extraKey) as? Category
 
             supportActionBar?.title = categoryName(category ?:Category.STARTER)
-            showDatas()
+
+
+            makeRequest()
+    }
+
+    private fun makeRequest(){
+        val queue = Volley.newRequestQueue(this)
+        val params = JSONObject()
+        params.put(NetworkConstants.idShopKey, 1)
+        val request = JsonObjectRequest(
+            Method.POST,
+            NetworkConstants.url,
+            params,
+            { result ->
+                Log.d( "request", result.toString(2))
+            },
+            { error->
+                Log.e( "request", error.toString())
+            }
+        )
+        queue.add(request)
+    //showDatas()
     }
 
     private fun showDatas(){
