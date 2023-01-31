@@ -3,6 +3,6 @@ package com.example.androiderestaurant.network
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class MenuResult(@SerializedName("data") val data: List<Category>): Serializable {
-
-}
+class Price (
+    @SerializedName("price") val price: String
+        ): Serializable

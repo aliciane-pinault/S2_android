@@ -22,6 +22,7 @@ class MenuActivity : AppCompatActivity() {
             val extraKey = "extraKey"
         }
         lateinit var binding: ActivityMenuBinding
+        lateinit var currentCategory: Category
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
             binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -29,7 +30,9 @@ class MenuActivity : AppCompatActivity() {
 
             val category = intent.getSerializableExtra(extraKey) as? Category
 
-            supportActionBar?.title = categoryName(category ?:Category.STARTER)
+            currentCategory = category ?: Category.STARTER
+
+            supportActionBar?.title = categoryName()
 
 
             makeRequest()
@@ -55,7 +58,12 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun parseData(data: String){
-        GsonBuilder().create().fromJson(data, MenuResult::class.java)
+        val result = GsonBuilder().create().fromJson(data, MenuResult::class.java)
+        val currentCategory = result.data.first{
+            it.name == categoryFilterKey()
+        }
+        Log.d( "request", "parsing")
+
     }
 
     private fun showDatas(){
@@ -71,13 +79,20 @@ class MenuActivity : AppCompatActivity() {
         Log.d("LifeCycle", "MenuActivity on Create")
     }
 
-    private fun categoryName(category: Category): String{
-        return when (category){
+    private fun categoryName(): String{
+        return when (currentCategory){
             Category.STARTER -> getString(R.string.starter)
             Category.MAIN -> getString(R.string.center)
             Category.DESSERT -> getString(R.string.finish)
         }
 
+    }
+    private fun categoryFilterKey(): String {
+        return when(currentCategory){
+            Category.STARTER -> "Entrées"
+            Category.MAIN -> "Plats"
+            Category.DESSERT -> "Dessert"
+        }
     }
 
     override fun onDestroy() {
