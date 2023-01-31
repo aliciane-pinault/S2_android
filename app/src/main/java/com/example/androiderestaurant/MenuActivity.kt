@@ -48,6 +48,7 @@ class MenuActivity : AppCompatActivity() {
             params,
             { result ->
                 Log.d( "request", result.toString(2))
+                parseData(result.toString())
             },
             { error->
                 Log.e( "request", error.toString())
