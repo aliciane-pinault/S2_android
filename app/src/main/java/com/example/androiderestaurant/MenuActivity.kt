@@ -63,6 +63,7 @@ class MenuActivity : AppCompatActivity() {
             it.name == categoryFilterKey()
         }
         Log.d( "request", "parsing")
+        //showDatas(category)
 
     }
 
