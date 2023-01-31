@@ -59,15 +59,15 @@ class MenuActivity : AppCompatActivity() {
 
     private fun parseData(data: String){
         val result = GsonBuilder().create().fromJson(data, MenuResult::class.java)
-        val currentCategory = result.data.first{
+        val category = result.data.first{
             it.name == categoryFilterKey()
         }
         Log.d( "request", "parsing")
-        //showDatas(category)
+        showDatas(category)
 
     }
 
-    private fun showDatas(){
+    private fun showDatas(category: com.example.androiderestaurant.network.Category){
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = CustomerAdapter(listOf("1","2","3")){
             val intent = Intent( this, DetailActivity::class.java)
