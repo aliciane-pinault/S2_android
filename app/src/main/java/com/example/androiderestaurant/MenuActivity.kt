@@ -10,7 +10,9 @@ import com.android.volley.Request.Method
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
+import com.example.androiderestaurant.network.MenuResult
 import com.example.androiderestaurant.network.NetworkConstants
+import com.google.gson.GsonBuilder
 import org.json.JSONObject
 
 enum class Category {STARTER, MAIN, DESSERT}
@@ -50,6 +52,10 @@ class MenuActivity : AppCompatActivity() {
         )
         queue.add(request)
     //showDatas()
+    }
+
+    private fun parseData(data: String){
+        GsonBuilder().create().fromJson(data, MenuResult::class.java)
     }
 
     private fun showDatas(){
