@@ -1,8 +1,11 @@
 package com.example.androiderestaurant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
 
 enum class Category {STARTER, MAIN, DESSERT}
@@ -20,6 +23,15 @@ class MenuActivity : AppCompatActivity() {
             val category = intent.getSerializableExtra(extraKey) as? Category
 
             supportActionBar?.title = categoryName(category ?:Category.STARTER)
+            showDatas()
+    }
+
+    private fun showDatas(){
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = CustomerAdapter(listOf("1","2","3")){
+            val intent = Intent( this, DetailActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {

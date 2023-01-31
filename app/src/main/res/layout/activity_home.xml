@@ -103,7 +103,7 @@
     <View
         android:id="@+id/view3"
         android:layout_width="158dp"
-        android:layout_height="16dp"
+        android:layout_height="8dp"
         android:background="#FFFFFD"
         app:layout_constraintBottom_toTopOf="@+id/center"
         app:layout_constraintEnd_toEndOf="@+id/start"
@@ -113,7 +113,7 @@
     <View
         android:id="@+id/view5"
         android:layout_width="162dp"
-        android:layout_height="16dp"
+        android:layout_height="8dp"
         android:background="#FFFFFD"
         app:layout_constraintBottom_toTopOf="@+id/fin"
         app:layout_constraintEnd_toEndOf="@+id/center"
@@ -123,7 +123,7 @@
     <View
         android:id="@+id/view6"
         android:layout_width="170dp"
-        android:layout_height="16dp"
+        android:layout_height="8dp"
         android:background="#FFFFFD"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/fin"

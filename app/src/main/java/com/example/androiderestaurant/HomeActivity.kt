@@ -22,24 +22,24 @@ class HomeActivity : AppCompatActivity() {
         private fun buttonsListener(){
 
             binding.start.setOnClickListener {
-                //Log.d( "button", "Click sur button starter")
-                //Toast.makeText(this, "entrées", Toast.LENGTH_LONG ).show()
-                val intent = Intent( this, MenuActivity::class.java)
-                startActivity(intent)
+                Log.d( "button", "Click sur button starter")
+                Toast.makeText(this, "entrées", Toast.LENGTH_LONG ).show()
+                //val intent = Intent( this, MenuActivity::class.java)
+                //startActivity(intent)
                 showCategory(Category.STARTER)
             }
             binding.center.setOnClickListener {
                 //Log.d( "button", "Click sur button center")
-                //Toast.makeText(this, "plats", Toast.LENGTH_LONG ).show()
-                val intent = Intent( this, MenuActivity::class.java)
-                startActivity(intent)
+                Toast.makeText(this, "plats", Toast.LENGTH_LONG ).show()
+                //val intent = Intent( this, MenuActivity::class.java)
+                //startActivity(intent)
                 showCategory(Category.STARTER)
             }
             binding.fin.setOnClickListener {
                 //Log.d( "button", "Click sur button finish")
-                //Toast.makeText(this, "desserts", Toast.LENGTH_LONG ).show()
-                val intent = Intent( this, MenuActivity::class.java)
-                startActivity(intent)
+                Toast.makeText(this, "desserts", Toast.LENGTH_LONG ).show()
+                //val intent = Intent( this, MenuActivity::class.java)
+                //startActivity(intent)
                 showCategory(Category.STARTER)
             }
         }
