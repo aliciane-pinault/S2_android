@@ -33,14 +33,14 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this, "plats", Toast.LENGTH_LONG ).show()
                 //val intent = Intent( this, MenuActivity::class.java)
                 //startActivity(intent)
-                showCategory(Category.STARTER)
+                showCategory(Category.MAIN)
             }
             binding.fin.setOnClickListener {
                 //Log.d( "button", "Click sur button finish")
                 Toast.makeText(this, "desserts", Toast.LENGTH_LONG ).show()
                 //val intent = Intent( this, MenuActivity::class.java)
                 //startActivity(intent)
-                showCategory(Category.STARTER)
+                showCategory(Category.DESSERT)
             }
         }
 

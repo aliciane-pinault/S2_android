@@ -60,8 +60,7 @@ class MenuActivity : AppCompatActivity() {
 
     private fun parseData(data: String){
         val result = GsonBuilder().create().fromJson(data, MenuResult::class.java)
-        val category = result.data.first{
-            it.name == categoryFilterKey()
+        val category = result.data.first{it.name == categoryFilterKey()
         }
         Log.d( "request", "parsing")
         showDatas(category)
