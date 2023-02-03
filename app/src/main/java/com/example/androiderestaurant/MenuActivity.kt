@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.example.androiderestaurant.databinding.ActivityMenuBinding
 import com.example.androiderestaurant.network.MenuResult
 import com.example.androiderestaurant.network.NetworkConstants
+import com.example.androiderestaurant.network.Plate
 import com.google.gson.GsonBuilder
 import org.json.JSONObject
 
@@ -69,7 +70,7 @@ class MenuActivity : AppCompatActivity() {
 
     private fun showDatas(category: com.example.androiderestaurant.network.Category){
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = CustomerAdapter(listOf("1","2","3")){
+        binding.recyclerView.adapter = CustomerAdapter(category.items){
             val intent = Intent( this, DetailActivity::class.java)
             startActivity(intent)
         }
@@ -92,7 +93,7 @@ class MenuActivity : AppCompatActivity() {
         return when(currentCategory){
             Category.STARTER -> "Entrées"
             Category.MAIN -> "Plats"
-            Category.DESSERT -> "Dessert"
+            Category.DESSERT -> "Desserts"
         }
     }
 

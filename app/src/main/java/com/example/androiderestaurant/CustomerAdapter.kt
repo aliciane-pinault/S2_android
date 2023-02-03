@@ -9,13 +9,16 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androiderestaurant.databinding.CellCustomBinding
+import com.example.androiderestaurant.network.Plate
+import com.squareup.picasso.Picasso
 import kotlin.math.log
 
-class CustomerAdapter(val items : List<String>, val clickListener: (Int) -> Unit) : RecyclerView.Adapter<CustomerAdapter.CellViewHolder>(){
+class CustomerAdapter(val items : List<Plate>, val clickListener: (Plate) -> Unit) : RecyclerView.Adapter<CustomerAdapter.CellViewHolder>(){
     class CellViewHolder(binding: CellCustomBinding): RecyclerView.ViewHolder(binding.root){
         val textView: TextView = binding.recycle //id du recycle view dans cell custom
-        val root: ConstraintLayout = binding.root
-
+        val imageView = binding.imageView
+        val priceTextView = binding.priceTextView
+        val root = binding.root
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CellViewHolder {
@@ -29,14 +32,22 @@ class CustomerAdapter(val items : List<String>, val clickListener: (Int) -> Unit
     }
 
     override fun onBindViewHolder(holder: CellViewHolder, position: Int) {
-        holder.textView.text = items[position]
-        holder.textView.setOnClickListener {
+        val plate = items[position]
+        holder.textView.text = plate.name
+        holder.priceTextView.text = plate.prices.first().price + "€"
+        Picasso.get().load(getThumbnail(plate)).into(holder.imageView)
+        holder.root.setOnClickListener {
             Log.d("click", "click on ${position+1}")
-            clickListener(position)
+            clickListener(plate)
         }
 
     }
 
-
-
+    private fun getThumbnail (plate: Plate): String? { //pour gérer ls erreurs si jamais il n'y a pas d'image ou de nom
+        return if (plate.images.isNotEmpty()&& plate.images.firstOrNull()?.isNotEmpty() == true) {
+            plate.images.firstOrNull()
+        } else{
+            null
+        }
+    }
 }
