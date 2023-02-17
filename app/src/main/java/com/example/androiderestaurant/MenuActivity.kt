@@ -65,13 +65,13 @@ class MenuActivity : AppCompatActivity() {
         }
         Log.d( "request", "parsing")
         showDatas(category)
-
     }
 
     private fun showDatas(category: com.example.androiderestaurant.network.Category){
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = CustomerAdapter(category.items){
-            val intent = Intent( this, DetailActivity::class.java)
+            //val intent = Intent( this, DetailActivity::class.java)
+            val intent = Intent( this, PresActivity::class.java)
             startActivity(intent)
         }
     }
